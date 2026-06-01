@@ -1,16 +1,16 @@
 class GhosttykitNightly < Formula
   desc "Ghostty terminal companion toolkit"
   homepage "https://github.com/thurstonsand/ghosttykit"
-  version "0.0.0-dev-dba2542"
+  version "0.0.0-dev-a670ba9"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-dba2542_darwin_arm64.zip"
-      sha256 "9dda61815ea2538fc3714f55002c0d8b5de357c1b10414b6d70dee777880ec26"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-a670ba9_darwin_arm64.zip"
+      sha256 "9dd970f27ac0dc4f483493dd152dbb7dd31759f170a8ed9a514501dd772a1570"
     else
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-dba2542_darwin_amd64.zip"
-      sha256 "dd9accac9cb1c6492dc77dcb014bdea72230d163332f0382fc5a261ae17574da"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-a670ba9_darwin_amd64.zip"
+      sha256 "444670fe1a9f18931ed761cb766e651f9dd0ff4a79a7ef08c471f03dc70e8a70"
     end
   end
 
@@ -31,7 +31,7 @@ class GhosttykitNightly < Formula
     <<~EOS
       This formula tracks nightly builds from GhosttyKit main and may break.
 
-Start Ghostty, then start the GhosttyKit daemon:
+      Start Ghostty, then start the GhosttyKit daemon:
 
         brew services start #{full_name}
 
@@ -43,7 +43,7 @@ Start Ghostty, then start the GhosttyKit daemon:
   end
 
   test do
-    assert_match "gty 0.0.0-dev-dba2542 protocol=", shell_output("#{bin}/gty version")
+    assert_match "gty 0.0.0-dev-a670ba9 protocol=", shell_output("#{bin}/gty version")
     assert_match "ghosttykitd 0.0.0-dev", shell_output("#{bin}/ghosttykitd --version")
   end
 end
