@@ -1,26 +1,27 @@
 class GhosttykitNightly < Formula
   desc "Ghostty terminal companion toolkit"
   homepage "https://github.com/thurstonsand/ghosttykit"
-  version "0.0.0-dev-a670ba9"
+  version "0.0.0-dev-3801e6a"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-a670ba9_darwin_arm64.zip"
-      sha256 "9dd970f27ac0dc4f483493dd152dbb7dd31759f170a8ed9a514501dd772a1570"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-3801e6a_darwin_arm64.zip"
+      sha256 "d2a0928d83bd10138f61e413b88fa412ae3a12217132be4c87ad25ca4764906d"
     else
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-a670ba9_darwin_amd64.zip"
-      sha256 "444670fe1a9f18931ed761cb766e651f9dd0ff4a79a7ef08c471f03dc70e8a70"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-3801e6a_darwin_amd64.zip"
+      sha256 "3f461b755e8639e242aca8346b6e0719f330255612636d333145d03ae6cdb0b5"
     end
   end
 
   def install
     bin.install "bin/gty"
-    bin.install "bin/ghosttykitd"
+    prefix.install "GhosttyKitD.app"
+    bin.install_symlink prefix/"GhosttyKitD.app/Contents/MacOS/ghosttykitd" => "ghosttykitd"
   end
 
   service do
-    run [opt_bin/"ghosttykitd"]
+    run [opt_prefix/"GhosttyKitD.app/Contents/MacOS/ghosttykitd"]
     keep_alive true
     working_dir var
     log_path var/"log/ghosttykitd.log"
@@ -43,7 +44,7 @@ class GhosttykitNightly < Formula
   end
 
   test do
-    assert_match "gty 0.0.0-dev-a670ba9 protocol=", shell_output("#{bin}/gty version")
+    assert_match "gty 0.0.0-dev-3801e6a protocol=", shell_output("#{bin}/gty version")
     assert_match "ghosttykitd 0.0.0-dev", shell_output("#{bin}/ghosttykitd --version")
   end
 end
