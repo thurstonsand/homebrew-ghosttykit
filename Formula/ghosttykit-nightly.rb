@@ -1,19 +1,16 @@
 class GhosttykitNightly < Formula
-  BASE_VERSION = "0.0.0".freeze
-  COMMIT = "f4d167d".freeze
-
   desc "Ghostty terminal companion toolkit"
   homepage "https://github.com/thurstonsand/ghosttykit"
-  version "#{BASE_VERSION}-dev-#{COMMIT}"
+  version "0.0.0-dev-dba2542"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_#{COMMIT}_darwin_arm64.zip"
-      sha256 "38e5f72e4082908b9b53e7081242b8fe20e898f66386d622e564921792ac8a7c"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-dba2542_darwin_arm64.zip"
+      sha256 "9dda61815ea2538fc3714f55002c0d8b5de357c1b10414b6d70dee777880ec26"
     else
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_#{COMMIT}_darwin_amd64.zip"
-      sha256 "94829e7b8e9219ba97bcd7b51ebfe01368f997a64a0de98760695c9b3d7ab48a"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly/ghosttykit_0.0.0-dev-dba2542_darwin_amd64.zip"
+      sha256 "dd9accac9cb1c6492dc77dcb014bdea72230d163332f0382fc5a261ae17574da"
     end
   end
 
@@ -34,7 +31,7 @@ class GhosttykitNightly < Formula
     <<~EOS
       This formula tracks nightly builds from GhosttyKit main and may break.
 
-      Start Ghostty, then start the GhosttyKit daemon:
+Start Ghostty, then start the GhosttyKit daemon:
 
         brew services start #{full_name}
 
@@ -46,7 +43,7 @@ class GhosttykitNightly < Formula
   end
 
   test do
-    assert_match "gty #{COMMIT} protocol=", shell_output("#{bin}/gty version")
+    assert_match "gty 0.0.0-dev-dba2542 protocol=", shell_output("#{bin}/gty version")
     assert_match "ghosttykitd 0.0.0-dev", shell_output("#{bin}/ghosttykitd --version")
   end
 end
