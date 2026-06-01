@@ -10,7 +10,7 @@ Nightly builds track recent commits on `main` and may break:
 brew install thurstonsand/ghosttykit/ghosttykit-nightly
 ```
 
-Start Ghostty before starting the daemon so macOS can ask for Automation permission:
+Start Ghostty before starting the daemon so macOS can ask for Automation permission on first start:
 
 ```sh
 open -a Ghostty

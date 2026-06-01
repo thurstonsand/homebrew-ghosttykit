@@ -36,8 +36,8 @@ class GhosttykitNightly < Formula
 
         brew services start #{full_name}
 
-      macOS should ask for permission to let ghosttykitd control Ghostty.
-      After granting access, verify the install with:
+      On first start, macOS should ask for permission to let GhosttyKitD control Ghostty.
+      Grant access, then verify the install with:
 
         gty doctor
     EOS
