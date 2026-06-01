@@ -1,9 +1,10 @@
 class GhosttykitNightly < Formula
+  BASE_VERSION = "0.0.0".freeze
   COMMIT = "f4d167d".freeze
 
   desc "Ghostty terminal companion toolkit"
   homepage "https://github.com/thurstonsand/ghosttykit"
-  version "0.0.0-dev-#{COMMIT}"
+  version "#{BASE_VERSION}-dev-#{COMMIT}"
   license "MIT"
 
   on_macos do
