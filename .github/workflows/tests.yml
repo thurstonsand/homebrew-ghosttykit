@@ -1,0 +1,18 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Audit formulae
+        run: brew audit --strict --online Formula/*.rb
+      - name: Install nightly formula
+        run: brew install --formula Formula/ghosttykit-nightly.rb
+      - name: Test nightly formula
+        run: brew test Formula/ghosttykit-nightly.rb
