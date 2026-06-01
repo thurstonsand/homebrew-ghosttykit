@@ -10,9 +10,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v6
+      - name: Tap checkout
+        run: brew tap thurstonsand/ghosttykit "$GITHUB_WORKSPACE"
       - name: Audit formulae
-        run: brew audit --strict --online Formula/*.rb
+        run: brew audit --strict --online thurstonsand/ghosttykit/ghosttykit-nightly
       - name: Install nightly formula
-        run: brew install --formula Formula/ghosttykit-nightly.rb
+        run: brew install thurstonsand/ghosttykit/ghosttykit-nightly
       - name: Test nightly formula
-        run: brew test Formula/ghosttykit-nightly.rb
+        run: brew test thurstonsand/ghosttykit/ghosttykit-nightly
