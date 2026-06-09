@@ -13,7 +13,15 @@ jobs:
       - name: Tap checkout
         run: brew tap thurstonsand/ghosttykit "$GITHUB_WORKSPACE"
       - name: Audit formulae
-        run: brew audit --strict --online thurstonsand/ghosttykit/ghosttykit-nightly
+        run: |
+          brew audit --strict --online thurstonsand/ghosttykit/ghosttykit
+          brew audit --strict --online thurstonsand/ghosttykit/ghosttykit-nightly
+      - name: Install stable formula
+        run: brew install thurstonsand/ghosttykit/ghosttykit
+      - name: Test stable formula
+        run: brew test thurstonsand/ghosttykit/ghosttykit
+      - name: Uninstall stable formula
+        run: brew uninstall thurstonsand/ghosttykit/ghosttykit
       - name: Install nightly formula
         run: brew install thurstonsand/ghosttykit/ghosttykit-nightly
       - name: Test nightly formula

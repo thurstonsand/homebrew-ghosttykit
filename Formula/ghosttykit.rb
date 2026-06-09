@@ -14,6 +14,8 @@ class Ghosttykit < Formula
     end
   end
 
+  conflicts_with "ghosttykit-nightly", because: "both install gty and ghosttykitd"
+
   def install
     bin.install "bin/gty"
     prefix.install "GhosttyKitD.app"
