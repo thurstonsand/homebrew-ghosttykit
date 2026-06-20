@@ -1,16 +1,16 @@
 class Ghosttykit < Formula
   desc "Ghostty terminal companion toolkit"
   homepage "https://github.com/thurstonsand/ghosttykit"
-  version "0.1.0"
+  version "0.2.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/v0.1.0/ghosttykit_v0.1.0_darwin_arm64.zip"
-      sha256 "ffe986562fc544fb656a7af65439848420bbeda5dd2ada02a94a41fe16a46315"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/v0.2.0/ghosttykit_0.2.0_darwin_arm64.zip"
+      sha256 "8bc98b248cf9c6fba59d44b00466035d91390c3d8e382811f8601a01dac1c109"
     else
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/v0.1.0/ghosttykit_v0.1.0_darwin_amd64.zip"
-      sha256 "8e00712fb6a58dd7000b770c4e754b30d9f0727ea36d3732238914e5f9809747"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/v0.2.0/ghosttykit_0.2.0_darwin_amd64.zip"
+      sha256 "9d05a19ef98b860ab3e637e9225107f818900c875c6f1568e35712bad03e1393"
     end
   end
 
@@ -32,6 +32,8 @@ class Ghosttykit < Formula
 
   def caveats
     <<~EOS
+
+
       Start Ghostty, then start the GhosttyKit daemon:
 
         brew services start #{full_name}
@@ -44,7 +46,7 @@ class Ghosttykit < Formula
   end
 
   test do
-    assert_match "gty v0.1.0 protocol=", shell_output("#{bin}/gty version")
-    assert_match "ghosttykitd 0.0.0-dev", shell_output("#{bin}/ghosttykitd --version")
+    assert_match "gty 0.2.0 protocol=", shell_output("#{bin}/gty version")
+    assert_match "ghosttykitd 0.2.0", shell_output("#{bin}/ghosttykitd --version")
   end
 end
