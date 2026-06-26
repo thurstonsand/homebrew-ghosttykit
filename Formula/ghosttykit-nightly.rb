@@ -1,16 +1,16 @@
 class GhosttykitNightly < Formula
   desc "Ghostty terminal companion toolkit"
   homepage "https://github.com/thurstonsand/ghosttykit"
-  version "0.2.1-dev-28215642529-fde685b"
+  version "0.2.1-dev-28217103689-678e0c4"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly-0.2.1-dev-28215642529-fde685b/ghosttykit_0.2.1-dev-28215642529-fde685b_darwin_arm64.zip"
-      sha256 "3dd4dc89b66976c53e818ad14ed0df7c261431ec5c5fb215be52e3e9a3dfe285"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly-0.2.1-dev-28217103689-678e0c4/ghosttykit_0.2.1-dev-28217103689-678e0c4_darwin_arm64.zip"
+      sha256 "4f04785d70e3bb810ce8756e542d9559561c704631b45bcdaf2468dcc3015cba"
     else
-      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly-0.2.1-dev-28215642529-fde685b/ghosttykit_0.2.1-dev-28215642529-fde685b_darwin_amd64.zip"
-      sha256 "2b05d8f2b78a393abf2ebb74aa726b4b0442efe95bfa1dbe31ba4477b078ee9a"
+      url "https://github.com/thurstonsand/ghosttykit/releases/download/nightly-0.2.1-dev-28217103689-678e0c4/ghosttykit_0.2.1-dev-28217103689-678e0c4_darwin_amd64.zip"
+      sha256 "855aa40d0364fc4ba7f9a723d936b587a0a161ab4f7039dfc5e92947e4bae651"
     end
   end
 
@@ -46,7 +46,7 @@ class GhosttykitNightly < Formula
   end
 
   test do
-    assert_match "gty 0.2.1-dev-28215642529-fde685b protocol=", shell_output("#{bin}/gty version")
-    assert_match "ghosttykitd 0.2.1-dev-28215642529-fde685b", shell_output("#{bin}/ghosttykitd --version")
+    assert_match "gty 0.2.1-dev-28217103689-678e0c4 protocol=", shell_output("#{bin}/gty version")
+    assert_match "ghosttykitd 0.2.1-dev-28217103689-678e0c4", shell_output("#{bin}/ghosttykitd --version")
   end
 end
