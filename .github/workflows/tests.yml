@@ -5,26 +5,15 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - name: Tap checkout
-        run: brew tap thurstonsand/ghosttykit "$GITHUB_WORKSPACE"
-      - name: Trust tap
-        run: brew trust thurstonsand/ghosttykit
-      - name: Audit formulae
+      - uses: actions/checkout@v7
+      - name: Validate tap migrations
         run: |
-          brew audit --strict --online thurstonsand/ghosttykit/ghosttykit
-          brew audit --strict --online thurstonsand/ghosttykit/ghosttykit-nightly
-      - name: Install stable formula
-        run: brew install thurstonsand/ghosttykit/ghosttykit
-      - name: Test stable formula
-        run: brew test thurstonsand/ghosttykit/ghosttykit
-      - name: Uninstall stable formula
-        run: brew uninstall thurstonsand/ghosttykit/ghosttykit
-      - name: Install nightly formula
-        run: brew install thurstonsand/ghosttykit/ghosttykit-nightly
-      - name: Test nightly formula
-        run: brew test thurstonsand/ghosttykit/ghosttykit-nightly
+          jq -e '.ghosttykit == "thurstonsand/tap"' tap_migrations.json
+          jq -e '."ghosttykit-nightly" == "thurstonsand/tap"' tap_migrations.json
